@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HookLab — AI Hook Generator for TikTok & YouTube Shorts</title>
-  <meta name="description" content="Generate scroll-stopping hooks for TikTok and YouTube Shorts in seconds with HookLab." />
+  <title>HookLab — AI Hooks for TikTok & YouTube Shorts</title>
+  <meta
+    name="description"
+    content="Generate scroll-stopping hooks for TikTok and YouTube Shorts in seconds with HookLab."
+  />
   <meta name="theme-color" content="#08111f" />
   <style>
     :root {
@@ -12,23 +15,29 @@
       --bg-2: #0a1628;
       --panel: rgba(10, 20, 36, 0.86);
       --panel-2: rgba(14, 26, 45, 0.96);
-      --line: rgba(255,255,255,0.08);
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.12);
       --text: #f8fbff;
       --muted: #9fb2c8;
+      --muted-2: #7f95ae;
       --accent: #6ee7a0;
       --accent-2: #22c55e;
       --accent-3: #16a34a;
+      --blue: #70d9ff;
       --danger: #f87171;
       --warning: #facc15;
-      --shadow: 0 18px 60px rgba(0,0,0,0.34);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.22);
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 16px;
+      --radius-sm: 12px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -53,13 +62,13 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(3, 9, 20, 0.66);
+      background: rgba(3, 9, 20, 0.68);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .nav {
-      min-height: 72px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -70,7 +79,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: 0.2px;
     }
@@ -83,7 +92,7 @@
       place-items: center;
       background: linear-gradient(135deg, #bbf7d0, #22c55e 56%, #15803d);
       color: #062312;
-      box-shadow: 0 10px 24px rgba(34,197,94,0.28);
+      box-shadow: 0 10px 24px rgba(34, 197, 94, 0.28);
       font-weight: 900;
     }
 
@@ -98,13 +107,22 @@
       padding: 10px 14px;
       border-radius: 999px;
       color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       font-size: 0.92rem;
       font-weight: 600;
+      transition: 0.18s ease;
     }
 
-    .hero { padding: 42px 0 24px; }
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero {
+      padding: 44px 0 18px;
+    }
 
     .hero-grid {
       display: grid;
@@ -124,18 +142,26 @@
     .hero-copy {
       position: relative;
       overflow: hidden;
-      padding: 32px;
+      padding: 34px;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 30%);
+      pointer-events: none;
     }
 
     .hero-copy::after {
       content: "";
       position: absolute;
-      right: -60px;
-      bottom: -60px;
-      width: 220px;
-      height: 220px;
+      right: -70px;
+      bottom: -70px;
+      width: 250px;
+      height: 250px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(110,231,160,0.20), transparent 65%);
+      background: radial-gradient(circle, rgba(110, 231, 160, 0.18), transparent 66%);
       pointer-events: none;
     }
 
@@ -145,8 +171,8 @@
       gap: 8px;
       padding: 9px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(110,231,160,0.22);
-      background: rgba(110,231,160,0.08);
+      border: 1px solid rgba(110, 231, 160, 0.22);
+      background: rgba(110, 231, 160, 0.08);
       color: #defbe6;
       font-size: 0.9rem;
       font-weight: 700;
@@ -155,10 +181,10 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2.35rem, 5vw, 4.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      max-width: 11ch;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+      max-width: 11.5ch;
     }
 
     .gradient {
@@ -169,25 +195,32 @@
     }
 
     .subtext {
-      margin: 18px 0 24px;
-      max-width: 60ch;
+      margin: 18px 0 22px;
+      max-width: 62ch;
       color: var(--muted);
-      line-height: 1.72;
-      font-size: 1.04rem;
+      line-height: 1.74;
+      font-size: 1.03rem;
     }
 
     .hero-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+    }
+
+    .hero-note {
+      margin: 0 0 24px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .btn {
       appearance: none;
       border: none;
       cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.2s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       min-height: 52px;
       border-radius: 16px;
       padding: 14px 18px;
@@ -196,8 +229,9 @@
 
     .btn:hover { transform: translateY(-1px); }
     .btn:active { transform: translateY(0); }
+
     .btn:disabled {
-      opacity: 0.6;
+      opacity: 0.68;
       cursor: not-allowed;
       transform: none;
     }
@@ -205,13 +239,22 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
       color: #05220f;
-      box-shadow: 0 12px 28px rgba(34,197,94,0.24);
+      box-shadow: 0 12px 28px rgba(34, 197, 94, 0.24);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-secondary:hover,
+    .copy-btn:hover,
+    .clear-btn:hover,
+    .example-topics button:hover,
+    .tone-pills button:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
     }
 
     .chips {
@@ -223,8 +266,8 @@
     .chip {
       padding: 12px 14px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       color: #d9e7f5;
       font-size: 0.93rem;
       font-weight: 600;
@@ -235,7 +278,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      background: linear-gradient(180deg, rgba(10,20,36,0.98), rgba(9,18,34,0.86));
+      background: linear-gradient(180deg, rgba(10,20,36,0.98), rgba(9,18,34,0.88));
     }
 
     .stats-grid {
@@ -253,7 +296,7 @@
 
     .stat-card strong {
       display: block;
-      font-size: 1.5rem;
+      font-size: 1.46rem;
       margin-bottom: 6px;
     }
 
@@ -283,7 +326,62 @@
       font-size: 0.95rem;
     }
 
-    .section { padding: 18px 0; }
+    .mini-proof {
+      display: grid;
+      gap: 10px;
+    }
+
+    .proof-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .proof-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+      box-shadow: 0 0 0 6px rgba(110, 231, 160, 0.08);
+    }
+
+    .section {
+      padding: 18px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-kicker {
+      color: #d6f7e2;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 58ch;
+    }
 
     .generator-wrap {
       display: grid;
@@ -293,11 +391,13 @@
       margin-top: 6px;
     }
 
-    .panel { padding: 24px; }
+    .panel {
+      padding: 24px;
+    }
 
     .panel h2 {
       margin: 0 0 8px;
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       letter-spacing: -0.02em;
     }
 
@@ -325,12 +425,13 @@
       border-radius: 16px;
       padding: 15px 16px;
       outline: none;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
       font-size: 0.98rem;
       -webkit-appearance: none;
       appearance: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
     .field input::placeholder,
@@ -341,8 +442,9 @@
     .field input:focus,
     .field select:focus,
     .waitlist-form input:focus {
-      border-color: rgba(110,231,160,0.4);
-      box-shadow: 0 0 0 4px rgba(110,231,160,0.08);
+      border-color: rgba(110, 231, 160, 0.4);
+      box-shadow: 0 0 0 4px rgba(110, 231, 160, 0.08);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     select option {
@@ -371,6 +473,7 @@
       border-radius: 999px;
       cursor: pointer;
       font-weight: 700;
+      transition: 0.18s ease;
     }
 
     .tone-pills {
@@ -390,6 +493,7 @@
       color: var(--text);
       font-weight: 700;
       cursor: pointer;
+      transition: 0.18s ease;
     }
 
     .tone-pills button.active {
@@ -498,12 +602,13 @@
       border-radius: 18px;
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.035));
       border: 1px solid rgba(255,255,255,0.08);
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
     }
 
     .hook-card:hover {
       transform: translateY(-1px);
       border-color: rgba(110,231,160,0.24);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
     }
 
     .hook-number {
@@ -542,7 +647,10 @@
       gap: 18px;
     }
 
-    .card { padding: 22px; }
+    .card {
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
 
     .card h3 {
       margin: 0 0 8px;
@@ -570,6 +678,17 @@
     .pricing-card {
       position: relative;
       overflow: hidden;
+    }
+
+    .pricing-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(112,217,255,0.08), transparent 65%);
+      pointer-events: none;
     }
 
     .pricing-card.featured {
@@ -608,6 +727,13 @@
       margin: 0 0 18px;
     }
 
+    .pricing-note {
+      margin-top: 10px;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
     .faq-item { grid-column: span 1; }
 
     .waitlist-wrap {
@@ -631,7 +757,18 @@
     .success-text { color: #bdf7cf; }
     .error-text { color: #ffb4b4; }
 
-    footer { padding: 8px 0 40px; }
+    .list-clean {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .list-clean li + li {
+      margin-top: 8px;
+    }
+
+    footer {
+      padding: 8px 0 40px;
+    }
 
     .footer-card {
       padding: 24px;
@@ -644,20 +781,21 @@
 
     .footer-copy h3 {
       margin: 0 0 8px;
-      font-size: 1.4rem;
+      font-size: 1.36rem;
     }
 
     .footer-copy p {
       margin: 0;
       color: var(--muted);
       line-height: 1.65;
-      max-width: 54ch;
+      max-width: 56ch;
     }
 
     .footer-links {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .footer-links a {
@@ -668,6 +806,13 @@
       color: var(--muted);
       font-size: 0.9rem;
       font-weight: 700;
+      transition: 0.18s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
     }
 
     .legal {
@@ -675,6 +820,21 @@
       color: #70859c;
       font-size: 0.86rem;
       line-height: 1.6;
+    }
+
+    .final-legal {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .final-legal a {
+      color: #bdd3e8;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      text-decoration-color: rgba(189,211,232,0.3);
+      text-underline-offset: 3px;
     }
 
     @media (max-width: 1080px) {
@@ -704,6 +864,7 @@
       .copy-btn,
       .clear-btn,
       .waitlist-form button { width: 100%; }
+      .footer-card { align-items: flex-start; }
     }
   </style>
 </head>
@@ -727,19 +888,25 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="glass hero-copy">
-          <div class="eyebrow">⚡ Scroll-stopping hooks in seconds</div>
-          <h1>Generate <span class="gradient">viral hooks</span> for TikTok and YouTube Shorts.</h1>
+          <div class="eyebrow">⚡ Built for short-form creators</div>
+          <h1>Generate <span class="gradient">stronger hooks</span> for TikTok and YouTube Shorts.</h1>
           <p class="subtext">
-            HookLab turns one topic into short, punchy opening lines for creators who post fast. Save time, get fresh angles, and move from idea to script quicker.
+            HookLab helps creators turn one topic into multiple sharp opening lines in seconds. Brainstorm faster, test more angles, and move from idea to script without staring at a blank page.
           </p>
+
           <div class="hero-actions">
-            <button class="btn btn-primary" onclick="scrollToSection('generator')">Try HookLab</button>
-            <button class="btn btn-secondary" onclick="fillDemo()">Use demo input</button>
+            <button class="btn btn-primary" onclick="scrollToSection('generator')">Generate hooks free</button>
+            <button class="btn btn-secondary" onclick="fillDemo()">Try demo topic</button>
           </div>
+
+          <p class="hero-note">
+            Great for creators, faceless channels, content freelancers, and anyone testing short-form ideas quickly.
+          </p>
+
           <div class="chips">
             <div class="chip">Fast creator workflow</div>
-            <div class="chip">Built for short-form creators</div>
-            <div class="chip">Copy and post faster</div>
+            <div class="chip">Built for short-form content</div>
+            <div class="chip">Copy and reuse instantly</div>
           </div>
         </div>
 
@@ -747,39 +914,59 @@
           <div class="stats-grid">
             <div class="stat-card">
               <strong>10</strong>
-              <span>fresh hooks per click</span>
+              <span>fresh hooks per generation</span>
             </div>
             <div class="stat-card">
               <strong>&lt;10s</strong>
-              <span>to get new ideas</span>
+              <span>to get new angles</span>
             </div>
             <div class="stat-card">
-              <strong>24/7</strong>
-              <span>creator workflow support</span>
+              <strong>4</strong>
+              <span>tone styles built in</span>
             </div>
           </div>
+
           <div class="trust-box">
-            <h3>Why creators use HookLab</h3>
+            <h3>Why HookLab works</h3>
             <p>
-              The hardest part of short-form content is usually the opening line. HookLab makes that first three seconds easier, faster, and more repeatable.
+              Most short-form content wins or loses in the first seconds. HookLab is focused on that exact moment — helping you create more opening lines, faster.
             </p>
           </div>
-          <div class="trust-box">
-            <h3>Good fit for</h3>
-            <p>
-              Fitness, study, motivation, facts, tech, self-improvement, educational channels, and faceless content formats.
-            </p>
+
+          <div class="trust-box mini-proof">
+            <div class="proof-row">
+              <div class="proof-dot"></div>
+              <div>Useful for fitness, study, money, facts, tech, education, and self-improvement content.</div>
+            </div>
+            <div class="proof-row">
+              <div class="proof-dot"></div>
+              <div>Good for testing multiple intros before recording or rewriting weak hooks from older videos.</div>
+            </div>
+            <div class="proof-row">
+              <div class="proof-dot"></div>
+              <div>Simple input flow: topic, audience, platform, tone — then generate.</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="generator">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Core product</p>
+          <h2 class="section-title">Generate hooks in a few clicks</h2>
+        </div>
+        <p class="section-subtitle">
+          Enter a topic, define who the content is for, pick your platform, and get ready-to-use opening lines.
+        </p>
+      </div>
+
       <div class="generator-wrap">
         <div class="glass panel">
           <h2>Hook generator</h2>
           <p class="panel-copy">
-            Enter your topic, your audience, and your platform. Choose a tone, then generate hooks you can use right away.
+            Use this when you need fresh opening lines for short-form videos, batch content planning, or quick idea expansion.
           </p>
 
           <div class="field">
@@ -826,6 +1013,7 @@
             <div class="status" id="status">Ready to generate.</div>
             <div class="status-dot" id="statusDot"></div>
           </div>
+
           <div class="usage-note" id="usageNote">Free plan: up to 3 generations per day on this device.</div>
           <div class="security-note">Your API key stays on the server, not in the browser.</div>
         </div>
@@ -835,37 +1023,69 @@
             <h3>Generated hooks</h3>
             <span id="resultMeta">10 hooks per generation</span>
           </div>
+
           <div class="results-box" id="results">
             <div class="empty-state">
               Your hooks will appear here. Try a topic like <strong>fitness</strong>, <strong>study tips</strong>, or <strong>money mistakes</strong> to test HookLab quickly.
             </div>
           </div>
-          <div class="tiny-note">Tip: specific topics usually produce better hooks than broad topics.</div>
+
+          <div class="tiny-note">
+            Tip: more specific topics usually lead to stronger hooks than broad topics.
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="features">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Why creators use it</p>
+          <h2 class="section-title">Simple, focused, and built for repeat use</h2>
+        </div>
+        <p class="section-subtitle">
+          HookLab is not trying to be a giant writing suite. It is designed to solve one important problem quickly: better openings.
+        </p>
+      </div>
+
       <div class="features-grid">
         <div class="glass card">
           <div class="icon">🎯</div>
           <h3>Focused on short-form content</h3>
-          <p>Built specifically for TikTok and Shorts instead of generic AI writing, so the output stays tighter and more useful for creators.</p>
+          <p>
+            Built specifically for TikTok and Shorts instead of generic AI writing, so the output stays tighter and more useful for creators.
+          </p>
         </div>
+
         <div class="glass card">
           <div class="icon">⚙️</div>
           <h3>Simple workflow</h3>
-          <p>Topic in. Audience in. Hooks out. No long prompt-writing workflow and no unnecessary setup for quick idea generation.</p>
+          <p>
+            Topic in. Audience in. Hooks out. No long prompt-writing process and no clutter when you just want ideas fast.
+          </p>
         </div>
+
         <div class="glass card">
           <div class="icon">📈</div>
           <h3>Built for repeat use</h3>
-          <p>Use HookLab when you brainstorm, batch record, rewrite an intro, or need fresh opening angles fast.</p>
+          <p>
+            Use HookLab when you brainstorm, batch record, rewrite intros, or need fresh opening angles before posting.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section" id="pricing">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Pricing</p>
+          <h2 class="section-title">Start free, upgrade later</h2>
+        </div>
+        <p class="section-subtitle">
+          The current version is built for early access and validation. Paid plans are listed to show the product direction.
+        </p>
+      </div>
+
       <div class="pricing-grid">
         <div class="glass card pricing-card">
           <div class="badge">Starter</div>
@@ -877,6 +1097,7 @@
             <li>1-click copy</li>
           </ul>
           <button class="btn btn-secondary" onclick="scrollToSection('generator')">Try free</button>
+          <div class="pricing-note">Best for testing the workflow and trying a few angles each day.</div>
         </div>
 
         <div class="glass card pricing-card featured">
@@ -890,6 +1111,7 @@
             <li>Future title + idea tools</li>
           </ul>
           <button class="btn btn-primary" onclick="scrollToSection('waitlist')">Join waitlist</button>
+          <div class="pricing-note">For creators who want faster idea output and deeper tooling later.</div>
         </div>
 
         <div class="glass card pricing-card">
@@ -902,52 +1124,79 @@
             <li>Advanced creator toolkit roadmap</li>
           </ul>
           <button class="btn btn-secondary" onclick="scrollToSection('waitlist')">Request access</button>
+          <div class="pricing-note">Designed for agencies, editors, and content teams in the future.</div>
         </div>
       </div>
     </section>
 
     <section class="section" id="faq">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">FAQ</p>
+          <h2 class="section-title">Quick answers before you try it</h2>
+        </div>
+      </div>
+
       <div class="faq-grid">
         <div class="glass card faq-item">
           <h3>Can people use this for free?</h3>
-          <p>Yes. This launch version is designed around a small free daily limit so visitors can test HookLab before upgrading later.</p>
+          <p>
+            Yes. The current version includes a small daily limit so visitors can test the product before paid plans are available.
+          </p>
         </div>
+
         <div class="glass card faq-item">
           <h3>Does HookLab save my topics?</h3>
-          <p>This version does not store user accounts or prompt history. It generates hooks and returns them right away.</p>
+          <p>
+            HookLab does not provide user accounts or saved workspaces yet. It generates results instantly and returns them in the current session.
+          </p>
         </div>
+
         <div class="glass card faq-item">
-          <h3>Can I deploy this as a real product?</h3>
-          <p>Yes. This version is already structured to deploy, add environment variables, and connect a real waitlist or payment flow later.</p>
+          <h3>Can this grow into a full product?</h3>
+          <p>
+            Yes. The app is already deployed, connected to a real waitlist, and structured for future analytics, subscriptions, and creator tools.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section" id="waitlist">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Early access</p>
+          <h2 class="section-title">Join the HookLab waitlist</h2>
+        </div>
+        <p class="section-subtitle">
+          Get notified about paid plans, upcoming features, and early access updates as the product grows.
+        </p>
+      </div>
+
       <div class="waitlist-wrap">
         <div class="glass panel">
-          <h2>Join the launch waitlist</h2>
+          <h2>Get early access</h2>
           <p class="panel-copy">
-            Get early access to paid plans, future tools, and launch updates.
+            Join the waitlist to hear about creator plans, future features, and product updates.
           </p>
+
           <form class="waitlist-form" onsubmit="saveWaitlist(event)">
             <input id="waitlistEmail" type="email" placeholder="Enter your email" required />
             <button class="btn" id="waitlistBtn" type="submit">Join waitlist</button>
           </form>
+
           <div class="waitlist-status" id="waitlistStatus">No email submitted yet.</div>
-          <div class="tiny-note">Current version stores waitlist signups on the server. Later you can swap this to Supabase or ConvertKit.</div>
+          <div class="tiny-note">You can request removal from the waitlist later if needed.</div>
         </div>
 
         <div class="glass panel">
-          <h2>Launch checklist</h2>
-          <p class="panel-copy">Before going public, these are the last important steps.</p>
-          <ul>
-            <li>Deploy frontend and server online</li>
-            <li>Set production environment variables</li>
-            <li>Add analytics dashboard later</li>
-            <li>Create privacy and terms pages</li>
-            <li>Connect Stripe when ready</li>
-            <li>Replace local usage limit with account-based limits later</li>
+          <h2>What happens next</h2>
+          <p class="panel-copy">The current version is live and working. The next layers are focused on product depth and monetization.</p>
+          <ul class="list-clean">
+            <li>Expand creator workflows beyond hooks</li>
+            <li>Add stronger analytics and usage insights</li>
+            <li>Launch paid access when the offer is ready</li>
+            <li>Improve limits and account-based usage later</li>
+            <li>Continue refining output quality from real usage</li>
           </ul>
         </div>
       </div>
@@ -957,15 +1206,23 @@
   <footer class="shell">
     <div class="glass footer-card">
       <div class="footer-copy">
-        <h3>HookLab launch version</h3>
+        <h3>HookLab</h3>
         <p>
-          Built to feel polished, trustworthy, and ready for early user testing. The next step is deployment, real traffic, analytics, and monetization.
+          A focused AI tool for generating stronger short-form video hooks. Built for creators who want to move from idea to opening line faster.
         </p>
-        <div class="legal">This page avoids fake customer claims and is positioned as an early launch product.</div>
+        <div class="legal">
+          HookLab is an early-stage product. Pricing and future features may change as the product evolves.
+        </div>
+        <div class="final-legal">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
       </div>
+
       <div class="footer-links">
+        <a href="#generator">Generator</a>
+        <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
         <a href="#waitlist">Waitlist</a>
       </div>
     </div>
@@ -992,7 +1249,8 @@
     updateUsageNote();
 
     function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
     }
 
     function setStatus(message, type = "idle") {
@@ -1065,7 +1323,8 @@
 
     function updateUsageNote() {
       const left = remainingUses();
-      document.getElementById("usageNote").textContent = `Free plan: ${left} of ${FREE_LIMIT} generations left today on this device.`;
+      document.getElementById("usageNote").textContent =
+        `Free plan: ${left} of ${FREE_LIMIT} generations left today on this device.`;
     }
 
     function renderHooks(lines) {
@@ -1088,6 +1347,15 @@
         .join("");
     }
 
+    async function parseJsonSafely(response) {
+      const text = await response.text();
+      try {
+        return text ? JSON.parse(text) : {};
+      } catch {
+        return { error: text || "Unexpected server response." };
+      }
+    }
+
     async function generateHooks() {
       if (isGenerating) return;
 
@@ -1104,7 +1372,7 @@
       }
 
       if (remainingUses() <= 0) {
-        setStatus("Free daily limit reached. Join the waitlist for full access.", "error");
+        setStatus("Free daily limit reached. Join the waitlist for future access updates.", "error");
         scrollToSection("waitlist");
         trackEvent("free_limit_reached", {});
         return;
@@ -1125,7 +1393,7 @@
           body: JSON.stringify({ topic, audience, platform, tone: selectedTone })
         });
 
-        const data = await response.json();
+        const data = await parseJsonSafely(response);
 
         if (!response.ok) {
           throw new Error(data.error || "Something went wrong.");
@@ -1202,18 +1470,18 @@
           body: JSON.stringify({ email })
         });
 
-        const data = await response.json();
+        const data = await parseJsonSafely(response);
 
         if (!response.ok) {
           throw new Error(data.error || "Failed to join waitlist.");
         }
 
         emailInput.value = "";
-        status.textContent = "Success. You are on the waitlist.";
+        status.textContent = "Success. You’re on the waitlist.";
         status.className = "waitlist-status success-text";
         trackEvent("waitlist_joined", {});
       } catch (error) {
-        status.textContent = error.message;
+        status.textContent = error.message || "Something went wrong. Please try again.";
         status.className = "waitlist-status error-text";
       } finally {
         isJoiningWaitlist = false;
@@ -1240,10 +1508,5 @@
       return div.innerHTML;
     }
   </script>
-  <footer style="text-align:center;margin-top:40px;font-size:14px;color:#8ea3b8;">
-    <a href="/privacy.html">Privacy</a>
-    ·
-    <a href="/terms.html">Terms</a>
-  </footer>
 </body>
 </html>
