@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — HookLab</title>
+  <meta name="description" content="Privacy Policy for HookLab." />
+  <meta name="theme-color" content="#08111f" />
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(10, 20, 36, 0.9);
+      --line: rgba(255,255,255,0.08);
+      --text: #f8fbff;
+      --muted: #9fb2c8;
+      --accent: #6ee7a0;
+      --shadow: 0 18px 60px rgba(0,0,0,0.34);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --max: 920px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.14), transparent 22%),
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.12), transparent 20%),
+        linear-gradient(180deg, #05101d 0%, #030914 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(3, 9, 20, 0.66);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #bbf7d0, #22c55e 56%, #15803d);
+      color: #062312;
+      box-shadow: 0 10px 24px rgba(34,197,94,0.28);
+      font-weight: 900;
+    }
+
+    .back-link {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .page {
+      padding: 40px 0 56px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding: 32px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(110,231,160,0.22);
+      background: rgba(110,231,160,0.08);
+      color: #defbe6;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .updated {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      margin: 30px 0 12px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    p, li {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .contact-box {
+      margin-top: 28px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    footer {
+      padding: 0 0 40px;
+    }
+
+    .footer-note {
+      color: #70859c;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-align: center;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(var(--max), calc(100% - 20px)); }
+      .nav { min-height: 66px; }
+      .card { padding: 22px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="shell nav">
+      <div class="brand">
+        <div class="brand-mark">H</div>
+        <span>HookLab</span>
+      </div>
+      <a class="back-link" href="/">← Back to HookLab</a>
+    </div>
+  </div>
+
+  <main class="shell page">
+    <section class="card">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: March 13, 2026</p>
+
+      <p>
+        This Privacy Policy explains how HookLab collects, uses, and protects information when you use the HookLab website and services.
+      </p>
+
+      <h2>1. Information we collect</h2>
+      <p>We may collect the following types of information:</p>
+      <ul>
+        <li>Email addresses submitted through the waitlist form.</li>
+        <li>Basic usage and event data, such as button clicks, feature usage, and product interaction events.</li>
+        <li>Information you enter into the app, such as topics, audience descriptions, selected platform, and selected tone, for the purpose of generating results.</li>
+        <li>Technical information such as browser, device, IP address, and request logs collected by our hosting or infrastructure providers.</li>
+      </ul>
+
+      <h2>2. How we use your information</h2>
+      <p>We use collected information to:</p>
+      <ul>
+        <li>Operate and improve HookLab.</li>
+        <li>Generate AI-powered hook suggestions.</li>
+        <li>Manage the waitlist and send product or launch updates.</li>
+        <li>Monitor usage, performance, abuse, errors, and security issues.</li>
+        <li>Analyze product interest and improve the user experience.</li>
+      </ul>
+
+      <h2>3. AI-generated content</h2>
+      <p>
+        When you submit information into HookLab, that content may be processed through third-party AI providers in order to generate results. You should avoid submitting sensitive personal information, confidential business information, or any data you do not want processed by external providers.
+      </p>
+
+      <h2>4. Waitlist and communications</h2>
+      <p>
+        If you join the HookLab waitlist, we may use your email address to contact you about product updates, launch information, new features, pricing, or access invitations. You can request removal from the waitlist at any time.
+      </p>
+
+      <h2>5. Third-party services</h2>
+      <p>
+        HookLab may use third-party providers to operate the service, including hosting providers, database providers, analytics tools, and AI providers. These providers may process certain data on our behalf in order to provide the service.
+      </p>
+
+      <h2>6. Data retention</h2>
+      <p>
+        We retain information for as long as reasonably necessary to operate the service, maintain security, comply with legal obligations, resolve disputes, and support business operations. We may delete or anonymize data when it is no longer needed.
+      </p>
+
+      <h2>7. Data security</h2>
+      <p>
+        We take reasonable steps to protect information using technical and organizational safeguards. However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.
+      </p>
+
+      <h2>8. Your rights</h2>
+      <p>
+        Depending on your location, you may have rights to request access to, correction of, deletion of, or restriction of certain personal data. You may also request removal from the waitlist.
+      </p>
+
+      <h2>9. Children's privacy</h2>
+      <p>
+        HookLab is not intended for children under the age required by applicable law to use the service independently. We do not knowingly collect personal information from children.
+      </p>
+
+      <h2>10. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. If we make material changes, we may update the date at the top of this page and publish the revised version on this website.
+      </p>
+
+      <h2>11. Contact</h2>
+      <div class="contact-box">
+        <strong>Contact HookLab</strong>
+        <p>
+          If you have privacy-related questions or want your waitlist email removed, contact us at:
+          <br />
+          <a href="mailto:khemmathad02@gmail.com">khemmathad02@gmail.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div class="footer-note">
+      HookLab is an early-stage product. Please review this policy regularly for updates.
+    </div>
+  </footer>
+</body>
+</html>
